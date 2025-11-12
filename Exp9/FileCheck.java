@@ -1,15 +1,25 @@
 import java.io.File;
-public class FileCheck {
+public class FilePermission {
     public static void main(String[] args) {
-        File file = new File("example.txt"); 
+        File file = new File("example2.txt"); 
         if (file.exists()) {
-            if (file.isFile()) {
-                System.out.println("It is a file.");
-            } else if (file.isDirectory()) {
-                System.out.println("It is a directory.");
-            }
-        } else {
-            System.out.println("File/Directory does not exist.");
+            System.out.println("Before changing permissions:");
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: " + file.canWrite());
+            System.out.println("Executable: " + file.canExecute());
+            file.setReadable(true);
+            file.setWritable(true);
+            file.setExecutable(false);
+            System.out.println("\nAfter changing permissions:");
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: " + file.canWrite());
+            System.out.println("Executable: " + file.canExecute());
+        } 
+        else {
+            System.out.println("File 'example2.txt' does not exist.");
         }
     }
 }
+
+
+
